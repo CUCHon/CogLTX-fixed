@@ -5,9 +5,11 @@ CogLTX is a framework to apply current BERT-like pretrained language models to l
 This repo is a preview version, we will work out a more easy-to-use version in the future. You need to wait for some time due to another project for the first author, and be assured that we are not forgetting!
 
 ## Environment
+create /data, /save_dir folders
+```
 The script `setup_env.sh` describe how to set up an environment by conda. The most important part is 
 ```
-pip install torch==1.3.1 torchvision==0.4.2 transformers==2.4.1 pytorch-lightning==0.6 gensim ujson fuzzywuzzy
+pip install torch==1.7.1 torchvision==0.8.2 transformers==2.8.0 pytorch-lightning==0.7.3 gensim==3.8.0 ujson fuzzywuzzy
 ``` 
 Note that the backward compatiblity of pytorch-lightning is not good, and some bugs in the 0.6 version are fixed manually in the code. We will change the framework in the later version of CogLTX.
 
