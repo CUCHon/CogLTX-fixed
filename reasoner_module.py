@@ -19,8 +19,9 @@ from buffer import buffer_collate
 
 class ReasonerModule(pl.LightningModule):
 
-    def __init__(self, config):
+    def __init__(self, hparams):
         super(ReasonerModule, self).__init__()
+        config=hparams
         self.config = config
         self.hparams = deepcopy(config)
         if hasattr(self.hparams, 'gpus'):
