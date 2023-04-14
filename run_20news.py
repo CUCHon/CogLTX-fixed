@@ -10,6 +10,13 @@ from main_loop import main_loop, prediction, main_parser
 from models import ClassificationReasoner
 from buffer import Buffer
 from utils import CAPACITY
+def conditional_trans_classification(qbuf, dbuf):
+    assert len(qbuf) == 1
+    new_qbuf = Buffer()
+    new_qblk = copy(qbuf[0])
+    new_qblk.ids = tokenizer.convert_tokens_to_ids(tokenizer.tokenize(new_qblk.label_name.replace('.', ' ')))
+    new_qbuf.blocks.append(new_qblk)
+    return new_qbuf, dbuf
 if __name__ == "__main__":
     print('Please confirm the 20news data are ready by ./20news/process_20news.py!')
     print('=====================================')
@@ -29,13 +36,7 @@ if __name__ == "__main__":
 
     tokenizer = AutoTokenizer.from_pretrained(config.model_name)
 
-    def conditional_trans_classification(qbuf, dbuf):
-        assert len(qbuf) == 1
-        new_qbuf = Buffer()
-        new_qblk = copy(qbuf[0])
-        new_qblk.ids = tokenizer.convert_tokens_to_ids(tokenizer.tokenize(new_qblk.label_name.replace('.', ' ')))
-        new_qbuf.blocks.append(new_qblk)
-        return new_qbuf, dbuf
+
     config.conditional_transforms = [conditional_trans_classification]
 
     if not config.only_predict: # train 
