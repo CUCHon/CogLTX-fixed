@@ -6,7 +6,7 @@ This repo is a preview version, we will work out a more easy-to-use version in t
 
 ## Environment
 create /data, /save_dir folders
-```
+
 The script `setup_env.sh` describe how to set up an environment by conda. The most important part is 
 ```
 pip install torch==1.7.1 torchvision==0.8.2 transformers==2.8.0 pytorch-lightning==0.7.3 gensim==3.8.0 ujson fuzzywuzzy
